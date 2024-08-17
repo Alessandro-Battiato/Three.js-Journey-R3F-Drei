@@ -1,6 +1,7 @@
 import { 
     Html,
     Float,
+    MeshReflectorMaterial,
     TransformControls, 
     OrbitControls,
     PivotControls,
@@ -59,7 +60,17 @@ export default function Experience()
 
         <mesh position-y={ - 1 } rotation-x={ - Math.PI * 0.5 } scale={ 10 }>
             <planeGeometry />
-            <meshStandardMaterial color="greenyellow" />
+            {/* 
+                The blur and mixBlur props set the blur reflection, and mixBlur is a value that goes from 0 (no blur) to 1 (full blur)
+                The mirror prop goes from 0 to 1 where 1 makes the plane look like a real mirror
+            */}
+            <MeshReflectorMaterial 
+                resolution={512}
+                blur={[1000, 1000]}
+                mixBlur={1}
+                mirror={0.7}
+                color="turquoise"
+            />
         </mesh>
 
         {/* Easily add 3D Text */}
