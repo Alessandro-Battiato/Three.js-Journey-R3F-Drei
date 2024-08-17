@@ -1,4 +1,5 @@
 import { 
+    Html,
     TransformControls, 
     OrbitControls,
     PivotControls 
@@ -8,6 +9,7 @@ import { useRef } from 'react'
 export default function Experience()
 {
     const cubeRef = useRef(null);
+    const sphereRef = useRef(null);
 
     return <>
         <OrbitControls makeDefault /> 
@@ -25,16 +27,25 @@ export default function Experience()
             The prop fixed set to true fixes the size of the anchor to the provided value of the scale
         */}
         <PivotControls 
-            anchor={[1, 1, 1]}
+            anchor={[0, 0, 0]}
             depthTest={false}
-            lineWidth={1}
+            lineWidth={4}
             axisColors={['#9381ff', '#ff4d6d', '#7ae582']}
-            scale={2}
+            scale={100}
             fixed
         >
-            <mesh position-x={ - 2 }>
+            <mesh ref={sphereRef} position-x={ - 2 }>
                 <sphereGeometry />
                 <meshStandardMaterial color="orange" />
+                {/* The prop occlude hides the injected HTML whenever the html is hidden while moving the camera around the objects */}
+                <Html 
+                    position={[1, 1, 0]}
+                    wrapperClass='label'
+                    center
+                    distanceFactor={8}
+                    occlude={[sphereRef, cubeRef]}
+                >Inject Html into the 3D Object
+                </Html>
             </mesh>
         </PivotControls>
 
