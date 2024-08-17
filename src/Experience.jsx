@@ -68,6 +68,7 @@ export default function Experience()
             color={"salmon"}
             position-y={2}
             maxWidth={2}
+            textAlign='center'
         >
             I LOVE R3F
             {/* 
