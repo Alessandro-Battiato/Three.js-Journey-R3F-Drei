@@ -1,4 +1,8 @@
-import { TransformControls, OrbitControls } from '@react-three/drei'
+import { 
+    TransformControls, 
+    OrbitControls,
+    PivotControls 
+} from '@react-three/drei'
 import { useRef } from 'react'
 
 export default function Experience()
@@ -15,10 +19,24 @@ export default function Experience()
         <directionalLight position={ [ 1, 2, 3 ] } intensity={ 4.5 } />
         <ambientLight intensity={ 1.5 } />
 
-        <mesh position-x={ - 2 }>
-            <sphereGeometry />
-            <meshStandardMaterial color="orange" />
-        </mesh>
+        {/* 
+            The prop anchor sets the anchor's position, which is relative to the object's position 
+            The prop depthTest set to false forces the anchor on top of the scene
+            The prop fixed set to true fixes the size of the anchor to the provided value of the scale
+        */}
+        <PivotControls 
+            anchor={[1, 1, 1]}
+            depthTest={false}
+            lineWidth={1}
+            axisColors={['#9381ff', '#ff4d6d', '#7ae582']}
+            scale={2}
+            fixed
+        >
+            <mesh position-x={ - 2 }>
+                <sphereGeometry />
+                <meshStandardMaterial color="orange" />
+            </mesh>
+        </PivotControls>
 
         <mesh ref={cubeRef} position-x={ 2 } scale={ 1.5 }>
             <boxGeometry />
