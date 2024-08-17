@@ -2,7 +2,8 @@ import {
     Html,
     TransformControls, 
     OrbitControls,
-    PivotControls 
+    PivotControls,
+    Text 
 } from '@react-three/drei'
 import { useRef } from 'react'
 
@@ -59,6 +60,13 @@ export default function Experience()
             <planeGeometry />
             <meshStandardMaterial color="greenyellow" />
         </mesh>
+
+        {/* Easily add 3D Text */}
+        <Text
+            font='./bangers-v20-latin-regular.woff'
+        >
+            I LOVE R3F
+        </Text>
 
     </>
 }
