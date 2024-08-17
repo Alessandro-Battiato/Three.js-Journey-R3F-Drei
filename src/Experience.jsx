@@ -1,5 +1,6 @@
 import { 
     Html,
+    Float,
     TransformControls, 
     OrbitControls,
     PivotControls,
@@ -62,21 +63,26 @@ export default function Experience()
         </mesh>
 
         {/* Easily add 3D Text */}
-        <Text
-            font='./bangers-v20-latin-regular.woff'
-            fontSize={1}
-            color={"salmon"}
-            position-y={2}
-            maxWidth={2}
-            textAlign='center'
+        <Float
+            speed={3}
+            floatIntensity={2}
         >
-            I LOVE R3F
-            {/* 
-                Adding a mesh Normal Material like this, provides a nice feature to the 3d text just rendered,
-                in fact, based on the orientation towards the light, the color of the text changes 
-             */}
-            <meshNormalMaterial />
-        </Text>
+            <Text
+                font='./bangers-v20-latin-regular.woff'
+                fontSize={1}
+                color={"salmon"}
+                position-y={2}
+                maxWidth={2}
+                textAlign='center'
+            >
+                I LOVE R3F
+                {/* 
+                    Adding a mesh Normal Material like this, provides a nice feature to the 3d text just rendered,
+                    in fact, based on the orientation towards the light, the color of the text changes 
+                */}
+                <meshNormalMaterial />
+            </Text>
+        </Float>
 
     </>
 }
